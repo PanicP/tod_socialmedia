@@ -12,10 +12,10 @@ public class Register {
 		this.username = id;
 		this.pass = pass;
 		this.userId = uID;
-	
+
 	}
 
-	public UUID getuserId(){
+	public UUID getUserId() {
 		return userId;
 	}
 
@@ -23,8 +23,7 @@ public class Register {
 		return username;
 	}
 
-	public String getpass() {
+	public String getPass() {
 		return pass;
 	}
 }
-
