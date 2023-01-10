@@ -10,7 +10,7 @@ public class DeleteAcc {
 		this.userId = uID;
 	}
 
-	public UUID userId(){
+	public UUID getuserId(){
 		return userId;
 	}
 

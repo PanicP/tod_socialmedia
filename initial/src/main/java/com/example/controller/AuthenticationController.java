@@ -31,8 +31,8 @@ public class AuthenticationController {
 
     
     @GetMapping("/deleteacc/{userId}")
-    public DeleteAcc DeleteAcc(@PathVariable("userId") UUID userID){
-		return new DeleteAcc(userID);
+    public DeleteAcc DeleteAcc(@PathVariable("userId") String userID){
+		return new DeleteAcc(UUID.fromString(userID));
 	}
 
 }
