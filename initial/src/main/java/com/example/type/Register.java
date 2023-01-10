@@ -15,7 +15,7 @@ public class Register {
 	
 	}
 
-	public UUID userId(){
+	public UUID getuserId(){
 		return userId;
 	}
 
