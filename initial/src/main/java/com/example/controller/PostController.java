@@ -17,31 +17,37 @@ import com.example.type.Post;
 public class PostController {
     @GetMapping("/user/{userId}/post/{postId}")
     public Post getPost(
-            @PathVariable("userId") UUID userId,
-            @PathVariable("postId") UUID postId) {
-        return new Post(userId, postId, System.currentTimeMillis(), System.currentTimeMillis(), 0, "content");
+            @PathVariable("userId") String userId,
+            @PathVariable("postId") String postId) {
+        return new Post(UUID.fromString(userId), UUID.fromString(postId), System.currentTimeMillis(),
+                System.currentTimeMillis(), 0, "content");
     }
 
     @PostMapping("/user/{userId}/post/{postId}")
     public Post postPost(
-            @PathVariable("userId") UUID userId,
-            @PathVariable("postId") UUID postId,
-            @RequestParam Post PostReq) {
-        return new Post(userId, postId, System.currentTimeMillis(), System.currentTimeMillis(), 0, "content");
+            @PathVariable("userId") String userId,
+            @PathVariable("postId") String postId
+    // @RequestParam Post PostReq
+    ) {
+
+        return new Post(UUID.fromString(userId), UUID.fromString(postId), System.currentTimeMillis(),
+                System.currentTimeMillis(), 0, "content");
     }
 
     @PutMapping("/user/{userId}/post/{postId}")
     public Post putPost(
-            @PathVariable("userId") UUID userId,
-            @PathVariable("postId") UUID postId,
-            @RequestParam Post PostReq) {
-        return new Post(userId, postId, System.currentTimeMillis(), System.currentTimeMillis(), 0, "content");
+            @PathVariable("userId") String userId,
+            @PathVariable("postId") String postId
+    // @RequestParam Post PostReq
+    ) {
+        return new Post(UUID.fromString(userId), UUID.fromString(postId), System.currentTimeMillis(),
+                System.currentTimeMillis(), 0, "content");
     }
 
     @DeleteMapping("/user/{userId}/post/{postId}")
     public DeletePostResponse deletePost(
-            @PathVariable("userId") UUID userId,
-            @PathVariable("postId") UUID postId) {
-        return new DeletePostResponse(userId);
+            @PathVariable("userId") String userId,
+            @PathVariable("postId") String postId) {
+        return new DeletePostResponse(UUID.fromString(userId));
     }
 }
