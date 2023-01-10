@@ -40,15 +40,40 @@ public class RestServiceApplicationTests {
 	@Test
 	public void registerSuccess() throws Exception {
 
-		this.mockMvc.perform(get("/register")).andDo(print()).andExpect(status().isOk());
+		this.mockMvc.perform(get("/register?username=test&password=test")).andDo(print()).andExpect(status().isOk());
 		// .andExpect(jsonPath("$.content").value("Hello, World!"));
 	}
 
 	@Test
-	@Disabled
 	public void registerFailed() throws Exception {
+		this.mockMvc.perform(get("/register")).andDo(print()).andExpect((status().isBadRequest()));
+		// .andExpect(jsonPath("$.content").value("Hello, World!"));
+	}
 
-		// this.mockMvc.perform(get("/register")).andDo(print()).andExpect(not((status().isOk()));
+	@Test
+	public void loginSuccess() throws Exception {
+
+		this.mockMvc.perform(get("/login?username=test&password=test")).andDo(print()).andExpect(status().isOk());
+		// .andExpect(jsonPath("$.content").value("Hello, World!"));
+	}
+
+	@Test
+	public void loginFailed() throws Exception {
+		this.mockMvc.perform(get("/login?username=test")).andDo(print()).andExpect((status().isBadRequest()));
+		// .andExpect(jsonPath("$.content").value("Hello, World!"));
+	}
+
+	@Test
+	public void deleteAccountSuccess() throws Exception {
+
+		this.mockMvc.perform(get("/deleteacc/02dc66aa-2b3d-46a8-ab8e-fce651046a9e")).andDo(print()).andExpect(status().isOk());
+		// .andExpect(jsonPath("$.content").value("Hello, World!"));
+	}
+
+	@Test
+	public void deleteAccountNotFound() throws Exception {
+
+		this.mockMvc.perform(get("/deleteacc")).andDo(print()).andExpect(status().isNotFound());
 		// .andExpect(jsonPath("$.content").value("Hello, World!"));
 	}
 
