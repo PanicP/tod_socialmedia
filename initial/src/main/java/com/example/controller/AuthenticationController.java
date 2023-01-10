@@ -5,6 +5,7 @@ import com.example.type.Login;
 
 import java.util.UUID;
 
+import org.apache.catalina.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,10 +30,12 @@ public class AuthenticationController {
 		return new Login(String.format(name),String.format(password));
 	}
 
-    
-    @GetMapping("/deleteacc/{userId}")
-    public DeleteAcc DeleteAcc(@PathVariable("userId") String userID){
-		return new DeleteAcc(UUID.fromString(userID));
+    @GetMapping("/deleteacc/{UserId}")
+    public DeleteAcc deleteacc(
+        @PathVariable UUID UserId
+    ) {
+		return new DeleteAcc(UserId);
 	}
+
 
 }
